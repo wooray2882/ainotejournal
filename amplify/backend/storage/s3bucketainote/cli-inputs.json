@@ -1,0 +1,14 @@
+{
+  "resourceName": "s3bucketainote",
+  "policyUUID": "fb116959",
+  "bucketName": "ainotejournal86b1c07be0df49a2b05ff1654917a035",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

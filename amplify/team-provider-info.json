@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-ainotejournal-dev-c187f-authRole",
+      "UnauthRoleArn": "arn:aws:iam::183631325767:role/amplify-ainotejournal-dev-c187f-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::183631325767:role/amplify-ainotejournal-dev-c187f-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-ainotejournal-dev-c187f-deployment",
+      "UnauthRoleName": "amplify-ainotejournal-dev-c187f-unauthRole",
+      "StackName": "amplify-ainotejournal-dev-c187f",
+      "StackId": "arn:aws:cloudformation:us-east-1:183631325767:stack/amplify-ainotejournal-dev-c187f/6cf77010-3260-11f0-a5ca-0e2a5d7821b3",
+      "AmplifyAppId": "d2gnldd493qpnf"
+    },
+    "categories": {
+      "auth": {
+        "ainotejournal22fa499b": {}
+      },
+      "storage": {
+        "s3bucketainote": {}
+      }
+    }
+  }
+}

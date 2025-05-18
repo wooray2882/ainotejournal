@@ -1,0 +1,38 @@
+type Note @model @auth(rules: [{ allow: owner }]) @searchable {
+  id: ID!
+  title: String!
+  content: String!
+  tags: [String]
+  isPinned: Boolean
+  createdAt: AWSDateTime
+  updatedAt: AWSDateTime
+}
+
+type Query {
+  searchNotes(
+    filter: SearchableNoteFilterInput
+    sort: [SearchableNoteSortInput]
+    limit: Int
+    nextToken: String
+  ): SearchableNoteConnection @aws_api_key @aws_cognito_user_pools
+}
+
+type Mutation {
+  generateTitleFromContent(content: String!): String @function(name: "generateTitle")
+  expandContent(content: String!): String @function(name: "expandContent")
+}
+
+type Subscription {
+  onCreateNote: Note
+    @aws_subscribe(mutations: ["createNote"])
+    @aws_api_key
+    @aws_cognito_user_pools
+  onUpdateNote: Note
+    @aws_subscribe(mutations: ["updateNote"])
+    @aws_api_key
+    @aws_cognito_user_pools
+  onDeleteNote: Note
+    @aws_subscribe(mutations: ["deleteNote"])
+    @aws_api_key
+    @aws_cognito_user_pools
+} 
