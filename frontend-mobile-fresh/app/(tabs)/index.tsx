@@ -29,7 +29,7 @@ export default function HomeScreen() {
             Quick Actions
           </ThemedText>
           
-          <TouchableOpacity style={styles.actionButton} onPress={() => router.push('/note_create')}>
+          <TouchableOpacity style={styles.actionButton} onPress={() => router.push('/note/create')}>
             <ThemedText style={styles.actionButtonText}>
               Create New Note
             </ThemedText>

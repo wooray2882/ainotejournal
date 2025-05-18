@@ -53,42 +53,42 @@ export const onDeleteTodo = /* GraphQL */ `subscription OnDeleteTodo($filter: Mo
 export const onCreateNote = /* GraphQL */ `
   subscription OnCreateNote {
     onCreateNote {
-      id
-      title
-      content
-      tags
-      isPinned
-      createdAt
-      updatedAt
-      owner
-    }
+    id
+    title
+    content
+    tags
+    isPinned
+    createdAt
+    updatedAt
+    owner
   }
+}
 `;
 export const onUpdateNote = /* GraphQL */ `
   subscription OnUpdateNote {
     onUpdateNote {
-      id
-      title
-      content
-      tags
-      isPinned
-      createdAt
-      updatedAt
-      owner
-    }
+    id
+    title
+    content
+    tags
+    isPinned
+    createdAt
+    updatedAt
+    owner
   }
+}
 `;
 export const onDeleteNote = /* GraphQL */ `
   subscription OnDeleteNote {
     onDeleteNote {
-      id
-      title
-      content
-      tags
-      isPinned
-      createdAt
-      updatedAt
-      owner
-    }
+    id
+    title
+    content
+    tags
+    isPinned
+    createdAt
+    updatedAt
+    owner
   }
+}
 `;

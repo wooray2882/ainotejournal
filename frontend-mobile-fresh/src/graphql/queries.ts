@@ -40,7 +40,26 @@ export const listTodos = /* GraphQL */ `query ListTodos(
 ` as GeneratedQuery<APITypes.ListTodosQueryVariables, APITypes.ListTodosQuery>;
 export const getNote = /* GraphQL */ `
   query GetNote($id: ID!) {
-    getNote(id: $id) {
+  getNote(id: $id) {
+    id
+    title
+    content
+    tags
+    isPinned
+    createdAt
+    updatedAt
+    owner
+  }
+}
+`;
+export const listNotes = /* GraphQL */ `
+  query ListNotes(
+  $filter: ModelNoteFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listNotes(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
       id
       title
       content
@@ -50,26 +69,7 @@ export const getNote = /* GraphQL */ `
       updatedAt
       owner
     }
+    nextToken
   }
-`;
-export const listNotes = /* GraphQL */ `
-  query ListNotes(
-    $filter: ModelNoteFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listNotes(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        title
-        content
-        tags
-        isPinned
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-    }
-  }
+}
 `;

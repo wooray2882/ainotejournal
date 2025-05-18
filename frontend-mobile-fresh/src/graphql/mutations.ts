@@ -76,42 +76,42 @@ export const deleteTodo = /* GraphQL */ `mutation DeleteTodo(
 export const createNote = /* GraphQL */ `
   mutation CreateNote($input: CreateNoteInput!) {
     createNote(input: $input) {
-      id
-      title
-      content
-      tags
-      isPinned
-      createdAt
-      updatedAt
-      owner
-    }
+    id
+    title
+    content
+    tags
+    isPinned
+    createdAt
+    updatedAt
+    owner
   }
+}
 `;
 export const updateNote = /* GraphQL */ `
   mutation UpdateNote($input: UpdateNoteInput!) {
     updateNote(input: $input) {
-      id
-      title
-      content
-      tags
-      isPinned
-      createdAt
-      updatedAt
-      owner
-    }
+    id
+    title
+    content
+    tags
+    isPinned
+    createdAt
+    updatedAt
+    owner
   }
+}
 `;
 export const deleteNote = /* GraphQL */ `
   mutation DeleteNote($input: DeleteNoteInput!) {
     deleteNote(input: $input) {
-      id
-      title
-      content
-      tags
-      isPinned
-      createdAt
-      updatedAt
-      owner
-    }
+    id
+    title
+    content
+    tags
+    isPinned
+    createdAt
+    updatedAt
+    owner
   }
+}
 `;
