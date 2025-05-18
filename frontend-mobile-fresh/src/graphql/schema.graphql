@@ -18,8 +18,6 @@ type Mutation {
   createNote(input: CreateNoteInput!): Note
   updateNote(input: UpdateNoteInput!): Note
   deleteNote(input: DeleteNoteInput!): Note
-  generateTitleFromContent(content: String!): String @function(name: "generateTitle")
-  expandContent(content: String!): String @function(name: "expandContent")
 }
 
 type Subscription {

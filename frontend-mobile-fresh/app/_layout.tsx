@@ -8,23 +8,20 @@ import { getCurrentUser } from 'aws-amplify/auth';
 import { Amplify } from 'aws-amplify';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import awsconfig from '../aws-exports';
+import { useColorScheme } from 'react-native';
 
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-// Initialize Amplify with proper configuration
-Amplify.configure({
-  ...awsconfig,
-  Auth: {
-    ...awsconfig.Auth,
-    storage: AsyncStorage,
-  },
-  Storage: {
-    S3: {
-      bucket: awsconfig.aws_user_files_s3_bucket,
-      region: awsconfig.aws_user_files_s3_bucket_region,
-    }
-  }
+// Configure Amplify
+console.log('Amplify config at runtime:', awsconfig);
+console.log('ENV:', {
+  EXPO_PUBLIC_AWS_PROJECT_REGION: process.env.EXPO_PUBLIC_AWS_PROJECT_REGION,
+  EXPO_PUBLIC_AWS_COGNITO_REGION: process.env.EXPO_PUBLIC_AWS_COGNITO_REGION,
+  EXPO_PUBLIC_AWS_USER_POOLS_ID: process.env.EXPO_PUBLIC_AWS_USER_POOLS_ID,
+  EXPO_PUBLIC_AWS_USER_POOLS_WEB_CLIENT_ID: process.env.EXPO_PUBLIC_AWS_USER_POOLS_WEB_CLIENT_ID,
+  EXPO_PUBLIC_AWS_APPSYNC_GRAPHQL_ENDPOINT: process.env.EXPO_PUBLIC_AWS_APPSYNC_GRAPHQL_ENDPOINT,
+  EXPO_PUBLIC_AWS_APPSYNC_REGION: process.env.EXPO_PUBLIC_AWS_APPSYNC_REGION,
+  EXPO_PUBLIC_AWS_APPSYNC_AUTHENTICATION_TYPE: process.env.EXPO_PUBLIC_AWS_APPSYNC_AUTHENTICATION_TYPE,
 });
+Amplify.configure(awsconfig);
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
@@ -67,9 +64,17 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
+      <Stack
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: colorScheme === 'dark' ? '#000' : '#fff',
+          },
+          headerTintColor: colorScheme === 'dark' ? '#fff' : '#000',
+        }}
+      >
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+        <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
         <Stack.Screen name="+not-found" />
       </Stack>
       <StatusBar style="auto" />

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
-import { signIn } from 'aws-amplify/auth';
+import { signIn, getCurrentUser } from 'aws-amplify/auth';
 import { router } from 'expo-router';
 
 export default function LoginScreen() {
@@ -25,6 +25,8 @@ export default function LoginScreen() {
       });
 
       if (isSignedIn) {
+        const user = await getCurrentUser();
+        console.log('User after sign-in:', user);
         router.replace('/(tabs)');
       } else if (nextStep?.signInStep === 'CONFIRM_SIGN_UP') {
         // Navigate to confirmation screen with email

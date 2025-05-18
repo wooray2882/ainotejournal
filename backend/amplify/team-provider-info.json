@@ -10,6 +10,14 @@
       "StackName": "amplify-ainotejournal-dev-442a7",
       "StackId": "arn:aws:cloudformation:us-east-1:183631325767:stack/amplify-ainotejournal-dev-442a7/ff9d83b0-30a7-11f0-be6b-12b695f505e1",
       "AmplifyAppId": "d366p5nu5fv4th"
+    },
+    "categories": {
+      "auth": {
+        "ainotejournal634b322d": {}
+      },
+      "api": {
+        "ainotejournal": {}
+      }
     }
   }
 }

@@ -12,11 +12,11 @@
       "AmplifyAppId": "d2gnldd493qpnf"
     },
     "categories": {
-      "auth": {
-        "ainotejournal22fa499b": {}
-      },
       "storage": {
         "s3bucketainote": {}
+      },
+      "auth": {
+        "ainotejournal0d15bcd1": {}
       }
     }
   }

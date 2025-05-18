@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, ActivityIndicator } from 'react-native';
 import { confirmSignUp, resendSignUpCode } from 'aws-amplify/auth';
 import { router, useLocalSearchParams } from 'expo-router';
 
@@ -7,6 +7,29 @@ export default function ConfirmScreen() {
   const { email } = useLocalSearchParams<{ email: string }>();
   const [code, setCode] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isInitializing, setIsInitializing] = useState(true);
+
+  useEffect(() => {
+    console.log('Confirm screen mounted with email:', email);
+    if (!email) {
+      console.log('No email provided, redirecting to signup');
+      Alert.alert('Error', 'Email address is missing', [
+        {
+          text: 'OK',
+          onPress: () => router.replace('/(auth)/signup')
+        }
+      ]);
+    }
+    setIsInitializing(false);
+  }, [email]);
+
+  if (isInitializing) {
+    return (
+      <View style={[styles.container, styles.centered]}>
+        <ActivityIndicator size="large" color="#007AFF" />
+      </View>
+    );
+  }
 
   const handleConfirm = async () => {
       if (!code) {
@@ -133,6 +156,21 @@ const styles = StyleSheet.create({
     padding: 20,
     justifyContent: 'center',
     backgroundColor: '#fff',
+    marginTop: 50,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: -2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  centered: {
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   title: {
     fontSize: 24,

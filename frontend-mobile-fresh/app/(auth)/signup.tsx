@@ -46,6 +46,7 @@ export default function SignUpScreen() {
 
       setIsLoading(true);
     try {
+      console.log('Starting signup process...');
       const { isSignUpComplete, userId, nextStep } = await signUp({
         username: email,
         password,
@@ -57,20 +58,14 @@ export default function SignUpScreen() {
         },
       });
       
-      if (isSignUpComplete) {
-        Alert.alert(
-          'Success',
-          'Please check your email for verification code',
-          [
-            {
-              text: 'OK',
-              onPress: () => router.push({
-        pathname: '/(auth)/confirm',
-        params: { email }
-              })
-            }
-          ]
-        );
+      console.log('Signup response:', { isSignUpComplete, userId, nextStep });
+      
+      if (isSignUpComplete || nextStep?.signUpStep === 'CONFIRM_SIGN_UP') {
+        console.log('Navigating to confirmation screen...');
+        router.push({
+          pathname: '/(auth)/confirm',
+          params: { email }
+        } as any);
       } else {
         console.log('Next step:', nextStep);
         // Handle additional signup steps if needed
